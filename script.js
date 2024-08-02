@@ -16,7 +16,7 @@ fetch('data.json')
 const suburbInput = document.getElementById('suburb-input');
 const suggestions = document.getElementById('suggestions');
 const result = document.getElementById('result');
-const suburb = document.getElementById('suburb');
+const suburbName = document.getElementById('suburb'); // Đổi tên biến để không bị trùng với dữ liệu
 const zone = document.getElementById('zone');
 const run = document.getElementById('run');
 const postcode = document.getElementById('postcode');
@@ -31,7 +31,7 @@ suburbInput.addEventListener('input', function() {
         return;
     }
 
-     const matchedSuburbs = data.filter(item => 
+    const matchedSuburbs = data.filter(item => 
         item.Suburb.toLowerCase().startsWith(input) || (item.Postcode && item.Postcode.toString().startsWith(input))
     );
     console.log('Matched Suburbs:', matchedSuburbs); // Log the matched suburbs
@@ -46,15 +46,15 @@ suburbInput.addEventListener('input', function() {
         `;        
         suggestions.appendChild(noResult);
     } else {
-        matchedSuburbs.forEach(suburb => {
+        matchedSuburbs.forEach(suburbItem => { // Đổi tên biến ở đây để không bị trùng với biến suburb
             const suggestion = document.createElement('div');
-            suggestion.textContent = `${suburb.Suburb} (${suburb.Postcode})`;
+            suggestion.textContent = `${suburbItem.Suburb} (${suburbItem.Postcode})`;
             suggestion.addEventListener('click', () => {
                 suburbInput.value = ''; // Clear the input field
-                suburb.textContent = suburbItem.Suburb; // Display the suburb name
-                zone.textContent = suburb.Zone;
-                run.textContent = suburb.Run;
-                postcode.textContent = suburb.Postcode;
+                suburbName.textContent = suburbItem.Suburb; // Display the suburb name
+                zone.textContent = suburbItem.Zone;
+                run.textContent = suburbItem.Run;
+                postcode.textContent = suburbItem.Postcode;
                 result.style.display = 'block';
                 suggestions.innerHTML = '';
             });
