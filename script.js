@@ -16,6 +16,7 @@ fetch('data.json')
 const suburbInput = document.getElementById('suburb-input');
 const suggestions = document.getElementById('suggestions');
 const result = document.getElementById('result');
+const suburb = document.getElementById('suburb');
 const zone = document.getElementById('zone');
 const run = document.getElementById('run');
 const postcode = document.getElementById('postcode');
@@ -49,7 +50,8 @@ suburbInput.addEventListener('input', function() {
             const suggestion = document.createElement('div');
             suggestion.textContent = `${suburb.Suburb} (${suburb.Postcode})`;
             suggestion.addEventListener('click', () => {
-                suburbInput.value = suburb.Suburb;
+                suburbInput.value = ''; // Clear the input field
+                suburb.textContent = suburbItem.Suburb; // Display the suburb name
                 zone.textContent = suburb.Zone;
                 run.textContent = suburb.Run;
                 postcode.textContent = suburb.Postcode;
