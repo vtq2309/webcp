@@ -28,19 +28,32 @@ suburbInput.addEventListener('input', function() {
         result.style.display = 'none';
         return;
     }
-
-    const matchedSuburbs = data.filter(item => item.Suburb.toLowerCase().startsWith(input));
+ const matchedSuburbs = data.filter(item => item.Suburb.toLowerCase().startsWith(input));
     console.log('Matched Suburbs:', matchedSuburbs); // Log the matched suburbs
-    matchedSuburbs.forEach(suburb => {
-        const suggestion = document.createElement('div');
-        suggestion.textContent = suburb.Suburb;
-        suggestion.addEventListener('click', () => {
-            suburbInput.value = suburb.Suburb;
-            zone.textContent = suburb.Zone;
-            run.textContent = suburb.Run;
-            result.style.display = 'block';
-            suggestions.innerHTML = '';
+    
+ if (matchedSuburbs.length === 0) {
+        const noResult = document.createElement('div');
+        noResult.innerHTML = `
+            No suburb matched. Note:
+            <br>GOS postcode: 2250 to 2263
+            <br>NTL postcode: 2264 to 2327
+            <br>WOL postcode: 2500 to 2533
+
+        `;        suggestions.appendChild(noResult);
+    } else {
+        matchedSuburbs.forEach(suburb => {
+            const suggestion = document.createElement('div');
+            suggestion.textContent = suburb.Suburb;
+            suggestion.addEventListener('click', () => {
+                suburbInput.value = suburb.Suburb;
+                zone.textContent = suburb.Zone;
+                run.textContent = suburb.Run;
+                result.style.display = 'block';
+                suggestions.innerHTML = '';
+            });
+            suggestions.appendChild(suggestion);
         });
-        suggestions.appendChild(suggestion);
-    });
+    }
 });
+
+   
