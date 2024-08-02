@@ -2095,7 +2095,17 @@
         "Zone": 2
     },
     {
+        "Suburb": "MOUNT COLAH",
+        "Run": 190,
+        "Zone": 2
+    },
+    {
         "Suburb": "MT DRUITT",
+        "Run": 355,
+        "Zone": 5
+    },
+    {
+        "Suburb": "MOUNT DRUITT",
         "Run": 355,
         "Zone": 5
     },
@@ -2105,7 +2115,17 @@
         "Zone": 2
     },
     {
+        "Suburb": "MOUNT KURING-GAI",
+        "Run": 187,
+        "Zone": 2
+    },
+    {
         "Suburb": "MT LEWIS",
+        "Run": 40,
+        "Zone": 6
+    },
+    {
+        "Suburb": "MOUNT LEWIS",
         "Run": 40,
         "Zone": 6
     },
@@ -2115,7 +2135,17 @@
         "Zone": 4
     },
     {
+        "Suburb": "MOUNT PRICHARD",
+        "Run": 362,
+        "Zone": 4
+    },
+    {
         "Suburb": "MT RIVERVIEW",
+        "Run": 109,
+        "Zone": 5
+    },
+    {
+        "Suburb": "MOUNT RIVERVIEW",
         "Run": 109,
         "Zone": 5
     },
@@ -2922,7 +2952,7 @@
     {
         "Suburb": "TEMPE",
         "Run": 147,
-        "Zone": 3
+        "Zone": 6
     },
     {
         "Suburb": "TENNYSON POINT",
