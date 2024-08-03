@@ -51,11 +51,13 @@ input {
     transform: translateX(-50%); /* Căn chỉnh giữa theo chiều ngang */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Tùy chọn: Thêm bóng để dễ nhìn hơn */
     display: none; /* Ẩn hộp gợi ý khi chưa nhập liệu */
+    font-size: 14px; /* Chỉnh cỡ chữ cho hộp gợi ý */
 }
 
 #suggestions div {
     padding: 5px;
     cursor: pointer;
+    font-size: 14px; /* Chỉnh cỡ chữ cho từng mục gợi ý */
 }
 
 #suggestions div:hover {
