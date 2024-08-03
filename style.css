@@ -37,3 +37,26 @@ input {
     margin: 0;
     font-size: 1.2em;
 }
+#suggestions {
+    max-height: 200px; /* Đặt chiều cao tối đa cho hộp gợi ý */
+    overflow-y: auto; /* Bật cuộn dọc */
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute; /* Đảm bảo nó nổi lên trên nội dung khác */
+    z-index: 1000; /* Đảm bảo nó ở trên nội dung khác */
+    width: calc(100% - 64px); /* Cùng chiều rộng với ô nhập liệu */
+    left: 1; /* Căn chỉnh hộp gợi ý với ô nhập liệu */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Tùy chọn: Thêm bóng để dễ nhìn hơn */
+	display: none; /* Ẩn hộp gợi ý khi chưa nhập liệu */
+}
+
+#suggestions div {
+    padding: 5px;
+    cursor: pointer;
+}
+
+#suggestions div:hover {
+    background-color: #f0f0f0; /* Đổi màu nền khi di chuột */
+}
