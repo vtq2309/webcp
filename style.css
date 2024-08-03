@@ -46,10 +46,11 @@ input {
     padding: 10px;
     position: absolute; /* Đảm bảo nó nổi lên trên nội dung khác */
     z-index: 1000; /* Đảm bảo nó ở trên nội dung khác */
-    width: calc(100% - 64px); /* Cùng chiều rộng với ô nhập liệu */
-    left: 1; /* Căn chỉnh hộp gợi ý với ô nhập liệu */
+    width: 80%; /* Cùng chiều rộng với ô nhập liệu */
+    left: 50%; /* Căn chỉnh giữa theo chiều ngang */
+    transform: translateX(-50%); /* Căn chỉnh giữa theo chiều ngang */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Tùy chọn: Thêm bóng để dễ nhìn hơn */
-	display: none; /* Ẩn hộp gợi ý khi chưa nhập liệu */
+    display: none; /* Ẩn hộp gợi ý khi chưa nhập liệu */
 }
 
 #suggestions div {
