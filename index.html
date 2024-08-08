@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suburb Lookup</title>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZW63C8F6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2ZW63C8F6D');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZW63C8F6D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2ZW63C8F6D');
+    </script>
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -20,10 +19,38 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
     <style>
-         footer {
-            margin-top: 50px; /* Điều chỉnh giá trị theo ý bạn để tạo khoảng cách mong muốn */
+        .map-button-container {
+            text-align: center; /* Căn giữa nút */
+            margin-top: 40px; /* Khoảng cách phía trên nút */
+            margin-bottom: 20px; /* Khoảng cách phía trên footer */
+        }
+
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Màu nền của nút */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .map-button:hover {
+            background-color: #0056b3; /* Màu nền của nút khi di chuột */
+        }
+
+        .pointing-hand-image {
+            margin-right: 10px; /* Khoảng cách giữa hình ảnh và chữ */
+            width: 24px; /* Chiều rộng của hình ảnh */
+            height: 24px; /* Chiều cao của hình ảnh */
+        }
+
+        footer {
+            margin-top: 25px; /* Điều chỉnh giá trị theo ý bạn để tạo khoảng cách mong muốn */
         }
 
         /* Định dạng cho các đoạn văn trong footer */
@@ -33,15 +60,15 @@
             margin: 0; /* Xóa bỏ khoảng cách mặc định giữa các đoạn văn */
             font-family: 'Barlow Condensed', sans-serif; /* Chọn kiểu chữ từ Google Fonts */
         }
-
-        }
     </style>
 
 </head>
 <body>
     <div class="container">
         <div class="logo-title">
-            <img src="logo.png" alt="Suburb Lookup Logo" class="logo">
+            <a href="#" id="logo-link">
+                <img src="logo.png" alt="Suburb Lookup Logo" class="logo">
+            </a>
             <h1>Suburb Lookup</h1>
         </div>
         <input type="text" id="suburb-input" placeholder="Enter Suburb or Postcode">
@@ -53,13 +80,27 @@
             <p>Postcode: <span id="postcode"></span></p>
         </div>
 
-    <script src="script.js"></script>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>Created by: Thien Quang VU</p>
-            <p>(Country AM Shift)</p>
+        <script src="script.js"></script>
+        <!-- Nút CP Pemulwuy Map -->
+        <div class="map-button-container">
+            <a href="https://vtq2309.github.io/cpmap/" class="map-button">
+                <img src="images/iconmap.ico" alt="Hình bàn tay trỏ" class="pointing-hand-image">
+                Pemulwuy Driver Map
+            </a>
         </div>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>Created by: Thien Quang VU</p>
+                <p>(Country AM Shift)</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('logo-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.reload();
+        });
+    </script>
 </body>
 </html>
