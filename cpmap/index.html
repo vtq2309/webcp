@@ -96,7 +96,7 @@
         }
         .highlight {
             position: absolute;
-            border: 4px solid black; /* Tăng độ dày của viền */
+            border: 4px solid black;
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -108,7 +108,11 @@
             100% { opacity: 1; }
         }
         footer {
-            margin-top: 5px; /* Điều chỉnh giá trị theo ý bạn để tạo khoảng cách mong muốn */
+            margin-top: 5px;
+        }
+        #selected-info {
+            font-weight: bold;
+            margin-bottom: 20px;
         }
     </style>
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -131,16 +135,16 @@
         <input type="text" id="search-box" pattern="[0-9]*" inputmode="numeric" placeholder="Enter Run Number" oninput="updateSuggestions()">
         <div id="suggestions"></div>
     </div>
+    <div id="selected-info"></div> <!-- Phần tử hiển thị thông báo -->
     <div id="image-container">
         <img src="images/map.png" alt="Sơ đồ số" id="number-image" onload="resizeImage()">
     </div>
 
     <script>
-        // Đối tượng để lưu trữ tọa độ
         let numberCoords = {};
 
         let imageWidth, imageHeight;
-        // Tải dữ liệu từ tệp JSON
+
         fetch('coords.json')
             .then(response => response.json())
             .then(data => {
@@ -159,9 +163,10 @@
                         const suggestion = document.createElement('div');
                         suggestion.textContent = number;
                         suggestion.onclick = () => {
-                            document.getElementById('search-box').value = number;
-                            suggestions.innerHTML = '';
-                            highlightNumber();
+                            document.getElementById('search-box').value = '';
+                            document.getElementById('suggestions').innerHTML = '';
+                            displaySelectedNumber(number);
+                            highlightNumber(number);
                         };
                         suggestions.appendChild(suggestion);
                     }
@@ -169,12 +174,15 @@
             }
         }
 
-        function highlightNumber() {
-            const searchValue = document.getElementById('search-box').value;
+        function displaySelectedNumber(number) {
+            const info = document.getElementById('selected-info');
+            info.textContent = `Driver: ${number} - Please follow the blinking circle below.`;
+        }
+
+        function highlightNumber(searchValue) {
             const imageContainer = document.getElementById('image-container');
             const numberImage = document.getElementById('number-image');
 
-            // Xóa bất kỳ highlight nào hiện có
             const existingHighlight = document.querySelector('.highlight');
             if (existingHighlight) {
                 existingHighlight.remove();
@@ -185,11 +193,9 @@
                 const highlight = document.createElement('div');
                 highlight.className = 'highlight';
 
-                // Tính toán tỷ lệ thu phóng
                 const scaleX = numberImage.clientWidth / imageWidth;
                 const scaleY = numberImage.clientHeight / imageHeight;
 
-                // Điều chỉnh tọa độ theo tỷ lệ thu phóng
                 highlight.style.left = `${coords[0] * scaleX}px`;
                 highlight.style.top = `${coords[1] * scaleY}px`;
                 highlight.style.width = `${coords[2] * scaleX}px`;
@@ -205,7 +211,7 @@
             imageHeight = numberImage.naturalHeight;
         }
     </script>
-    <!-- Footer -->
+
     <footer>
         <div class="footer-content">
             <p>Created by: Thien Quang VU</p>
