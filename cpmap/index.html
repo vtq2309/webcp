@@ -107,6 +107,9 @@
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
+        .blinking-text {
+            animation: blink 1s infinite;
+        }
         footer {
             margin-top: 5px;
         }
@@ -176,7 +179,7 @@
 
         function displaySelectedNumber(number) {
             const info = document.getElementById('selected-info');
-            info.innerHTML = `Driver number: ${number} <br> Please follow the blinking circle below.`;
+            info.innerHTML = `Run Number: ${number} <br> Please follow the <span class="blinking-text">blinking circle</span> below.`;
         }
 
         function highlightNumber(searchValue) {
@@ -212,7 +215,12 @@
         }
     </script>
 
-    
+    <footer>
+        <div class="footer-content">
+            <p>Created by: Thien Quang VU</p>
+            <p>(Country AM Shift)</p>
+        </div>
+    </footer>
 
 </body>
 </html>
