@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let data = [];
+    
+    // Tải dữ liệu từ file data.json
     fetch('data.json')
         .then(response => {
             if (!response.ok) {
@@ -16,18 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const suburbInput = document.getElementById('suburb-input');
     const suggestions = document.getElementById('suggestions');
     const result = document.getElementById('result');
-    const suburbName = document.getElementById('suburb'); // Đổi tên biến để không bị trùng với dữ liệu
+    const suburbName = document.getElementById('suburb');
     const zone = document.getElementById('zone');
     const run = document.getElementById('run');
     const postcode = document.getElementById('postcode');
 
+    // Lắng nghe sự kiện khi người dùng nhập vào input
     suburbInput.addEventListener('input', function() {
         const input = suburbInput.value.toLowerCase();
-        console.log('Input:', input); // Ghi lại giá trị đầu vào
+        console.log('Input:', input);
         suggestions.innerHTML = '';
 
         if (input.length === 0) {
-            suggestions.style.display = 'none'; // Ẩn hộp gợi ý khi không có nội dung nhập vào
+            suggestions.style.display = 'none';
             result.style.display = 'none';
             return;
         }
@@ -35,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const matchedSuburbs = data.filter(item => 
             item.Suburb.toLowerCase().startsWith(input) || (item.Postcode && item.Postcode.toString().startsWith(input))
         );
-        console.log('Matched Suburbs:', matchedSuburbs); // Ghi lại các vùng ngoại ô khớp
+        console.log('Matched Suburbs:', matchedSuburbs);
 
         if (matchedSuburbs.length === 0) {
-            suggestions.style.display = 'block'; // Hiển thị hộp gợi ý khi có kết quả khớp
+            suggestions.style.display = 'block';
             const noResult = document.createElement('div');
             noResult.innerHTML = `
                 No suburb matched. Note:
@@ -48,22 +51,31 @@ document.addEventListener('DOMContentLoaded', () => {
             `;        
             suggestions.appendChild(noResult);
         } else {
-            suggestions.style.display = 'block'; // Hiển thị hộp gợi ý khi có kết quả khớp
-            matchedSuburbs.forEach(suburbItem => { // Đổi tên biến ở đây để không bị trùng với biến suburb
+            suggestions.style.display = 'block';
+            matchedSuburbs.forEach(suburbItem => {
                 const suggestion = document.createElement('div');
                 suggestion.textContent = `${suburbItem.Suburb} (${suburbItem.Postcode})`;
                 suggestion.addEventListener('click', () => {
-                    suburbInput.value = ''; // Xóa ô nhập liệu
-                    suburbName.textContent = suburbItem.Suburb; // Hiển thị tên vùng ngoại ô
+                    suburbInput.value = '';
+                    suburbName.textContent = suburbItem.Suburb;
                     zone.textContent = suburbItem.Zone;
                     run.textContent = suburbItem.Run;
                     postcode.textContent = suburbItem.Postcode;
                     result.style.display = 'block';
                     suggestions.innerHTML = '';
-                    suggestions.style.display = 'none'; // Ẩn hộp gợi ý sau khi chọn gợi ý
+                    suggestions.style.display = 'none';
                 });
                 suggestions.appendChild(suggestion);
             });
         }
     });
+
+    // Sự kiện click cho logo, tải lại file index.html
+    const logoLink = document.getElementById('logo-link');
+    if (logoLink) {
+        logoLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.href = 'index.html'; // Điều hướng tới file index.html
+        });
+    }
 });
