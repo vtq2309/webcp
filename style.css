@@ -85,6 +85,9 @@ label {
     margin: 0;
     font-size: 1.2em;
 }
+#result {
+    margin-top: 20px; /* Tăng khoảng cách phía trên nhiều hơn */
+}
 
 #suggestions {
     max-height: 200px;
