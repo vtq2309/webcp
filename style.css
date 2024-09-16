@@ -16,7 +16,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
-    width: 270px;
+    width: 280px;
 }
 
 .logo-title {
@@ -33,7 +33,7 @@ body {
 
 .input-container {
     position: relative;
-    width: 80%; /* Chiếm toàn bộ chiều rộng của container */
+    width: 90%; /* Chiếm toàn bộ chiều rộng của container */
     margin-bottom: 5px;
     display: flex;
     justify-content: center;
@@ -95,18 +95,18 @@ label {
     padding: 10px;
     position: absolute;
     z-index: 1000;
-    width: 210px;
+    width: 260px;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     display: none;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #suggestions div {
     padding: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #suggestions div:hover {
