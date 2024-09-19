@@ -19,8 +19,17 @@ body {
     width: 280px;
 }
 
+
 .logo-title {
     margin-bottom: 20px;
+}
+.logo {
+    max-width: 270px; /* Giới hạn chiều rộng của logo */
+    max-height: 100px; /* Giới hạn chiều cao của logo */
+    width: auto; /* Đảm bảo giữ tỷ lệ */
+    height: auto; /* Đảm bảo giữ tỷ lệ */
+    display: block; /* Đảm bảo logo là block element */
+    margin: 0 auto; /* Căn giữa logo */
 }
 
 .input-section {
@@ -84,10 +93,12 @@ label {
 #result p {
     margin: 0;
     font-size: 1.2em;
+	
 }
 #result {
     margin-top: 20px; /* Tăng khoảng cách phía trên nhiều hơn */
 }
+
 
 #suggestions {
     max-height: 200px;
